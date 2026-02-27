@@ -1,0 +1,186 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block title %}MediCore | Modern Hospital Management{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 4rem 10%;
+        gap: 4rem;
+        min-height: 80vh;
+    }
+
+    .hero-content {
+        flex: 1;
+        max-width: 600px;
+        z-index: 10;
+    }
+
+    .hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        background: linear-gradient(135deg, #fff, #94a3b8);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+        color: #94a3b8;
+        margin-bottom: 2.5rem;
+    }
+
+    .hero-image {
+        flex: 1;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-image img {
+        width: 100%;
+        max-width: 600px;
+        border-radius: 30px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 210, 255, 0.3);
+        border: 1px solid var(--glass-border);
+        transition: transform 0.5s ease;
+    }
+
+    .hero-image:hover img {
+        transform: scale(1.02) rotate(1deg);
+    }
+
+    .hero-image::after {
+        content: '';
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(circle, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
+        z-index: -1;
+    }
+
+    .features {
+        padding: 8rem 10%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        background: #0a0f1d;
+    }
+
+    .feature-card {
+        padding: 3rem;
+        background: #111827;
+        border-radius: 24px;
+        border: 1px solid var(--glass-border);
+        transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        background: #1e293b;
+        border-color: var(--primary);
+    }
+
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .stats {
+        padding: 6rem 10%;
+        display: flex;
+        justify-content: space-around;
+        text-align: center;
+        background: linear-gradient(90deg, #0f172a, #1e293b);
+    }
+
+    .stat-item h3 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--primary);
+    }
+
+    .stat-item p {
+        color: #94a3b8;
+        font-weight: 500;
+    }
+
+    @media (max-width: 968px) {
+        .hero { flex-direction: column; text-align: center; padding: 4rem 5%; }
+        .hero-title { font-size: 3rem; }
+        .hero-image img { max-width: 100%; }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero animate-fade-in">
+    <div class="hero-content">
+        <h1 class="hero-title">Future of Medical Excellence.</h1>
+        <p class="hero-subtitle">Experience a revolutionary hospital management system designed for speed, security, and seamless collaboration between Doctors and Patients.</p>
+        <div class="hero-btns">
+            <a href="/register/" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Join Now</a>
+            <a href="/login/" class="btn" style="margin-left: 1.5rem; border: 1px solid var(--glass-border);">Explore Features</a>
+        </div>
+    </div>
+    <div class="hero-image">
+        <img src="{% if hero_image %}/{{ hero_image }}{% else %}https://plus.unsplash.com/premium_photo-1664475477169-46b784084d4e?auto=format&fit=crop&q=80&w=1000{% endif %}" alt="Future Hospital">
+    </div>
+</section>
+
+<section class="stats">
+    <div class="stat-item">
+        <h3>50+</h3>
+        <p>Specialist Doctors</p>
+    </div>
+    <div class="stat-item">
+        <h3>10k+</h3>
+        <p>Happy Patients</p>
+    </div>
+    <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Support Care</p>
+    </div>
+    <div class="stat-item">
+        <h3>100%</h3>
+        <p>Digital Records</p>
+    </div>
+</section>
+
+<section class="features">
+    <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3 class="feature-title">Smart Booking</h3>
+        <p>Book appointments in seconds with your preferred doctors. Real-time availability tracking.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">💊</div>
+        <h3 class="feature-title">E-Prescriptions</h3>
+        <p>Access your medical prescriptions and reports digitally, anytime, anywhere.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3 class="feature-title">Transparent Billing</h3>
+        <p>Get instant invoices and track your medical expenses with ease and security.</p>
+    </div>
+</section>
+{% endblock %}
